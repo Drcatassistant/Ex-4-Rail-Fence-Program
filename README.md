@@ -1,25 +1,87 @@
-# Ex-4 Rail-Fence-Program
+-----------------------------------------------------------------------
 
-# IMPLEMENTATION OF RAIL FENCE – ROW & COLUMN TRANSFORMATION TECHNIQUE
+# Rail Fence Cipher
+Rail Fence Cipher using with different key values
 
 # AIM:
 
-# To write a C program to implement the rail fence transposition technique.
+To develop a simple C program to implement Rail Fence Cipher.
 
-# DESCRIPTION:
+## DESIGN STEPS:
 
-In the rail fence cipher, the plain text is written downwards and diagonally on successive "rails" of an imaginary fence, then moving up when we reach the bottom rail. When we reach the top rail, the message is written downwards again until the whole plaintext is written out. The message is then read off in rows.
+### Step 1:
 
-# ALGORITHM:
+Design of Rail Fence Cipher algorithnm 
 
-STEP-1: Read the Plain text.
-STEP-2: Arrange the plain text in row columnar matrix format.
-STEP-3: Now read the keyword depending on the number of columns of the plain text.
-STEP-4: Arrange the characters of the keyword in sorted order and the corresponding columns of the plain text.
-STEP-5: Read the characters row wise or column wise in the former order to get the cipher text.
+### Step 2:
 
-# PROGRAM
+Implementation using C or pyhton code
 
-# OUTPUT
+### Step 3:
 
-# RESULT
+Testing algorithm with different key values. 
+
+## PROGRAM:
+
+```
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+main()
+{
+int i,j,len,rails,count,code[100][1000];
+ char str[1000];
+ printf("Enter a Secret Message\n");
+ gets(str);
+ len=strlen(str);
+printf("Enter number of rails\n");
+scanf("%d",&rails);
+for(i=0;i<rails;i++)
+{
+ for(j=0;j<len;j++)
+ {
+ code[i][j]=0;
+ }
+}
+count=0;
+j=0;
+while(j<len)
+{
+if(count%2==0)
+{
+for(i=0;i<rails;i++)
+{
+ //strcpy(code[i][j],str[j]);
+ code[i][j]=(int)str[j]; 
+ j++;
+}
+}
+else
+{
+for(i=rails-2;i>0;i--)
+{
+ code[i][j]=(int)str[j];
+j++;
+} 
+} 
+count++;
+}
+for(i=0;i<rails;i++)
+{
+for(j=0;j<len;j++)
+{
+ if(code[i][j]!=0)
+ printf("%c",code[i][j]);
+}
+}
+printf("\n");
+}
+```
+
+## OUTPUT:
+
+![image](https://github.com/user-attachments/assets/15133eb9-b494-498c-9cae-8a796c87bfb1)
+
+
+## RESULT:
+The program is executed successfully
