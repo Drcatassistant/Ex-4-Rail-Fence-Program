@@ -1,5 +1,3 @@
------------------------------------------------------------------------
-
 # Rail Fence Cipher
 Rail Fence Cipher using with different key values
 
